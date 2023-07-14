@@ -1,6 +1,6 @@
-// Declaración de variables y objetos necesarios
+// Declaración de variable
 
-const productos = []; // Array para almacenar los productos
+const productos = []; // Array productos
 
 // Objeto Producto
 function Producto(nombre, categoria, precio) {
@@ -9,7 +9,7 @@ function Producto(nombre, categoria, precio) {
   this.precio = precio;
 }
 
-// Función para agregar un producto
+// Función agregarProducto
 function agregarProducto() {
   const nombre = prompt("Ingrese el nombre del producto:");
   const categoria = prompt("Ingrese la categoría del producto:");
@@ -43,12 +43,11 @@ function filtrarPorCategoria() {
 
   if (productosFiltrados.length > 0) {
     console.log("Productos encontrados:");
-    console.table(productosFiltrados);
+    console.log(productosFiltrados);
   } else {
     console.log("No se encontraron productos en esa categoría.");
   }
 }
-
 
 // Agregar algunos productos de ejemplo
 const producto1 = new Producto("Camiseta", "Ropa", 29.99);
@@ -82,7 +81,7 @@ while (true) {
       break;
     case 4:
       console.log("¡Hasta luego!");
-      break; // Reemplazamos "return" por "break"
+      break;
     default:
       console.log("Opción inválida. Intente nuevamente.");
   }
