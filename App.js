@@ -1,6 +1,6 @@
-// Declaración de variable
+// Declaración de variables y objetos necesarios
 
-const productos = []; // Array productos
+const productos = []; // Array para almacenar los productos
 
 // Objeto Producto
 function Producto(nombre, categoria, precio) {
@@ -9,7 +9,7 @@ function Producto(nombre, categoria, precio) {
   this.precio = precio;
 }
 
-// Función agregarProducto
+// Función para agregar un producto
 function agregarProducto() {
   const nombre = prompt("Ingrese el nombre del producto:");
   const categoria = prompt("Ingrese la categoría del producto:");
@@ -49,19 +49,14 @@ function filtrarPorCategoria() {
   }
 }
 
-// Agregar algunos productos de ejemplo
-const producto1 = new Producto("Camiseta", "Ropa", 29.99);
-const producto2 = new Producto("Zapatos", "Calzado", 59.99);
-const producto3 = new Producto("Gorra", "Accesorios", 9.99);
-
-productos.push(producto1, producto2, producto3);
-
 // Ejecución del programa
 
 console.log("Bienvenido al sistema de gestión de productos.");
 
-while (true) {
-  const opcion = parseInt(prompt(
+let opcion;
+
+do {
+  opcion = parseInt(prompt(
     "Seleccione una opción:\n" +
     "1. Agregar un producto\n" +
     "2. Buscar un producto por nombre\n" +
@@ -79,10 +74,9 @@ while (true) {
     case 3:
       filtrarPorCategoria();
       break;
-    case 4:
-      console.log("¡Hasta luego!");
-      break;
     default:
       console.log("Opción inválida. Intente nuevamente.");
   }
-}
+} while (opcion !== 4);
+
+console.log("¡Hasta luego!");
