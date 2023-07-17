@@ -4,56 +4,57 @@
 const input = document.getElementById('taskInput');
 const addButton = document.getElementById('addButton');
 const list = document.getElementById('taskList');
+let tasksList = [];
 
-// Función para agregar una nueva tarea a la lista
-function agregarTarea() {
-  const tareaTexto = input.value.trim();
+// Función para guardar las tareas en el almacenamiento local
+function saveLocalStorage() {
+  localStorage.setItem('tareas', JSON.stringify(tasksList));
+}
 
-  if (tareaTexto !== '') {
-    const elementoLista = document.createElement('li');
-    elementoLista.textContent = tareaTexto;
+// Función para elminar una tarea
+function removeTask(taskId) {
+  tasksList = tasksList.filter((task) => task.id !== parseInt(taskId));
+  document.getElementById(taskId).remove();
+  saveLocalStorage();
+}
 
-    const botonEliminar = document.createElement('button');
-    botonEliminar.textContent = 'Eliminar';
-    botonEliminar.addEventListener('click', () => {
-      list.removeChild(elementoLista);
-      guardarTareasEnStorage(); // Actualizamos el almacenamiento local al eliminar una tarea
-    });
+// Función para mostrar una tarea
+function showTask(task) {
+  const listItem = document.createElement('li');
+  listItem.textContent = task.description;
+  listItem.setAttribute('id', task.id);
+  const delBtn = document.createElement('button');
+  delBtn.textContent = 'Eliminar';
+  delBtn.addEventListener('click', (e) => {
+    const taskId = e.target.closest('li').id;
+    removeTask(taskId);
+  });
+  listItem.appendChild(delBtn);
+  list.appendChild(listItem);
+}
 
-    elementoLista.appendChild(botonEliminar);
-    list.appendChild(elementoLista);
-    input.value = '';
-    guardarTareasEnStorage(); // Actualizamos el almacenamiento local al agregar una tarea
-  }
+// Función para agregar una tarea
+function addTask() {
+  const taskText = input.value.trim();
+
+  let task = {
+    id: new Date().getTime(),
+    description: taskText,
+  };
+  tasksList.push(task);
+
+  saveLocalStorage();
+
+  showTask(task);
+}
+
+function loadLocalStorage() {
+  const tasksList = JSON.parse(localStorage.getItem('tareas')) || [];
+  tasksList.forEach((task) => showTask(task));
 }
 
 // Agregar evento al botón para agregar tarea
-addButton.addEventListener('click', agregarTarea);
-
-// Función para cargar las tareas desde el almacenamiento local
-function cargarTareasDesdeStorage() {
-  const tareas = JSON.parse(localStorage.getItem('tareas')) || [];
-  tareas.forEach(tarea => {
-    const elementoLista = document.createElement('li');
-    elementoLista.textContent = tarea;
-
-    const botonEliminar = document.createElement('button');
-    botonEliminar.textContent = 'Eliminar';
-    botonEliminar.addEventListener('click', () => {
-      list.removeChild(elementoLista);
-      guardarTareasEnStorage(); // Actualizamos el almacenamiento local al eliminar una tarea
-    });
-
-    elementoLista.appendChild(botonEliminar);
-    list.appendChild(elementoLista);
-  });
-}
-
-// Función para guardar las tareas en el almacenamiento local
-function guardarTareasEnStorage() {
-  const tareas = Array.from(list.children).map(li => li.textContent);
-  localStorage.setItem('tareas', JSON.stringify(tareas));
-}
+addButton.addEventListener('click', addTask);
 
 // Cargar tareas desde el almacenamiento local al cargar la página
-window.addEventListener('load', cargarTareasDesdeStorage);
+window.addEventListener('load', loadLocalStorage);
