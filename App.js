@@ -1,60 +1,61 @@
-// app.js
+// Archivo JavaScript
 
-// Obtener elementos del DOM
-const input = document.getElementById('taskInput');
-const addButton = document.getElementById('addButton');
-const list = document.getElementById('taskList');
-let tasksList = [];
+// Define la función principal que se ejecutará al cargar la página
+window.onload = function () {
+  // Agregar eventos a los elementos del DOM
+  // Aquí puedes asignar funciones a botones, inputs, etc.
+  // Por ejemplo:
+  document.getElementById('calcularBtn').addEventListener('click', calcularPrestamo);
+};
 
-// Función para guardar las tareas en el almacenamiento local
-function saveLocalStorage() {
-  localStorage.setItem('tareas', JSON.stringify(tasksList));
+// Función para cargar los datos simulados desde data.json utilizando AJAX y JSON
+function cargarDatos() {
+  // Aquí realizarías la carga de datos utilizando fetch o XMLHttpRequest
+  // Por simplicidad, puedes cargar los datos directamente si no tienes acceso a una API
+  return fetch('data.json')
+    .then(response => response.json())
+    .catch(error => console.error('Error al cargar los datos:', error));
 }
 
-// Función para elminar una tarea
-function removeTask(taskId) {
-  tasksList = tasksList.filter((task) => task.id !== parseInt(taskId));
-  document.getElementById(taskId).remove();
-  saveLocalStorage();
+// Función para calcular la cuota del préstamo
+function calcularCuota(monto, tasa, plazo) {
+  // Aquí realizarías los cálculos para obtener la cuota del préstamo
+  // Por ejemplo:
+  const interesMensual = (tasa / 100) / 12;
+  const cuota = (monto * interesMensual) / (1 - Math.pow(1 + interesMensual, -plazo));
+  return cuota.toFixed(2); // Redondeamos a 2 decimales
 }
 
-// Función para mostrar una tarea
-function showTask(task) {
-  const listItem = document.createElement('li');
-  listItem.textContent = task.description;
-  listItem.setAttribute('id', task.id);
-  const delBtn = document.createElement('button');
-  delBtn.textContent = 'Eliminar';
-  delBtn.addEventListener('click', (e) => {
-    const taskId = e.target.closest('li').id;
-    removeTask(taskId);
-  });
-  listItem.appendChild(delBtn);
-  list.appendChild(listItem);
+// Función para mostrar el resultado en el DOM
+function mostrarResultado(nombrePrestamo, cuota) {
+  // Aquí manipularías el DOM para mostrar el resultado de la simulación
+  // Puedes crear elementos HTML dinámicamente y agregarlos al DOM
+  // Por ejemplo:
+  const resultadoDiv = document.getElementById('resultado');
+  resultadoDiv.innerHTML = `<p>Para el préstamo "${nombrePrestamo}", la cuota mensual es: $${cuota}</p>`;
 }
 
-// Función para agregar una tarea
-function addTask() {
-  const taskText = input.value.trim();
+// Función principal para calcular el préstamo y mostrar el resultado
+function calcularPrestamo() {
+  cargarDatos()
+    .then(data => {
+      // Aquí obtendrías los datos simulados de los préstamos
+      // Por ejemplo, data sería un array de objetos JSON con los préstamos
 
-  let task = {
-    id: new Date().getTime(),
-    description: taskText,
-  };
-  tasksList.push(task);
+      // Obtener los valores ingresados por el usuario (puedes usar document.getElementById o querySelector)
+      const monto = parseFloat(document.getElementById('montoInput').value);
+      const plazo = parseInt(document.getElementById('plazoInput').value);
+      const tipoPrestamo = document.getElementById('tipoPrestamoSelect').value;
 
-  saveLocalStorage();
+      // Buscar el préstamo seleccionado en los datos cargados
+      const prestamoSeleccionado = data.find(prestamo => prestamo.nombre === tipoPrestamo);
 
-  showTask(task);
+      if (prestamoSeleccionado) {
+        const cuota = calcularCuota(monto, prestamoSeleccionado.tasa, plazo);
+        mostrarResultado(prestamoSeleccionado.nombre, cuota);
+      } else {
+        alert('El préstamo seleccionado no existe en los datos.');
+      }
+    })
+    .catch(error => console.error('Error al calcular el préstamo:', error));
 }
-
-function loadLocalStorage() {
-  const tasksList = JSON.parse(localStorage.getItem('tareas')) || [];
-  tasksList.forEach((task) => showTask(task));
-}
-
-// Agregar evento al botón para agregar tarea
-addButton.addEventListener('click', addTask);
-
-// Cargar tareas desde el almacenamiento local al cargar la página
-window.addEventListener('load', loadLocalStorage);

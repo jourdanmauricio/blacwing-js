@@ -1,0 +1,26 @@
+[
+    {
+      "nombre": "Préstamo Personal",
+      "monto": 10000,
+      "plazo": 12,
+      "tasa": 8.5
+    },
+    {
+      "nombre": "Préstamo Hipotecario",
+      "monto": 200000,
+      "plazo": 240,
+      "tasa": 6.25
+    },
+    {
+      "nombre": "Préstamo Automotriz",
+      "monto": 25000,
+      "plazo": 48,
+      "tasa": 7.75
+    },
+    {
+      "nombre": "Préstamo Educativo",
+      "monto": 15000,
+      "plazo": 60,
+      "tasa": 5.9
+    }
+] 

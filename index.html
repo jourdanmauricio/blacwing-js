@@ -3,13 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List</title>
+  <title>Calculadora</title>
 </head>
 <body>
-  <h1>To-Do List</h1>
-  <input type="text" id="taskInput" placeholder="Agregar tarea...">
-  <button id="addButton">Agregar</button>
-  <ul id="taskList"></ul>
-  <script src="App.js"></script>
+    <!-- Estructura básica del simulador de préstamos en el HTML -->
+    <div>
+        <label for="tipoPrestamoSelect">Seleccione un tipo de préstamo:</label>
+        <select id="tipoPrestamoSelect">
+            <!-- Aquí puedes agregar opciones con los nombres de los préstamos -->
+            <!-- Por ejemplo: -->
+            <option value="PrestamoPersonal">Préstamo Personal</option>
+            <option value="PrestamoHipotecario">Préstamo Hipotecario</option>
+            <!-- Agrega otras opciones según tus datos simulados -->
+        </select>
+    </div>
+  
+  <div>
+    <label for="montoInput">Monto del préstamo:</label>
+    <input type="number" id="montoInput">
+  </div>
+  
+  <div>
+    <label for="plazoInput">Plazo (en meses):</label>
+    <input type="number" id="plazoInput">
+  </div>
+  
+  <button id="calcularBtn">Calcular Cuota</button>
+  
+  <div id="resultado"></div>
+  
+    <script src="App.js"></script>
 </body>
 </html>
