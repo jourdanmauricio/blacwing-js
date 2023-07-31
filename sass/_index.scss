@@ -1,0 +1,91 @@
+@use 'mixinsfunc';
+
+@mixin set-image {
+  background: {
+    size: cover;
+    repeat: no-repeat;
+    position: center right;
+  }
+}
+
+.hero {
+  background-image: url('../images/hero_img.jpg');
+  min-height: calc(100vh - 80px);
+  @include set-image;
+
+  div {
+    min-height: inherit;
+    background-color: rgba(0, 0, 0, 0.3);
+    @include mixinsfunc.create-flex(center);
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+    padding: mixinsfunc.pixels-rem(20);
+
+    h2 {
+      font-size: mixinsfunc.pixels-rem(30);
+    }
+
+    p {
+      color: #fff;
+      font-size: mixinsfunc.pixels-rem(20);
+    }
+  }
+}
+
+.featured {
+  padding: mixinsfunc.pixels-rem(20);
+  display: flex;
+  flex-flow: row wrap;
+
+  &__article {
+    padding: mixinsfunc.pixels-rem(20) 0;
+    width: 40%;
+    flex: 0 0 100%;
+
+    h2 {
+      padding: mixinsfunc.pixels-rem(20) 0;
+    }
+
+    img {
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+}
+
+.experiences {
+  padding: mixinsfunc.pixels-rem(20);
+  margin: mixinsfunc.pixels-rem(40) 0;
+  width: 100%;
+
+  &__container {
+    margin-top: mixinsfunc.pixels-rem(40);
+    @include mixinsfunc.create-flex(center);
+    flex-direction: column;
+    gap: mixinsfunc.pixels-rem(30);
+
+    &__item {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .featured {
+    display: flex;
+    align-items: center;
+
+    &__article {
+      flex: 0 0 50%;
+    }
+    &--reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .experiences__container {
+    flex-direction: row;
+  }
+}

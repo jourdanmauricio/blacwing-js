@@ -1,0 +1,64 @@
+@use 'reset';
+@use 'variables';
+@use 'menu';
+@use 'index';
+@use 'about';
+@use 'services';
+@use 'contact';
+
+/* Estilos generales */
+html,
+body {
+  max-width: 1600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  background-color: variables.$bg-color;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: variables.$title-color;
+}
+
+h3 {
+  font-size: 20px;
+  text-align: center;
+  color: variables.$title-color;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: variables.$paragraph-color;
+}
+
+/* color placeholder input bootstrap  */
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #dee2e6;
+  opacity: 1; /* Firefox */
+}
+
+.form-control:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #dee2e6;
+}
+
+.form-control::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #dee2e6;
+}
+
+footer p {
+  font-size: 16px;
+}

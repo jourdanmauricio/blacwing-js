@@ -1,0 +1,101 @@
+@use 'variables';
+@use 'mixinsfunc';
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  height: 80px;
+  color: #000;
+  width: 100%;
+  z-index: 50;
+  box-shadow: 0 4px 9px 0px rgba(41, 41, 41, 0.25);
+
+  &__container {
+    @include mixinsfunc.create-flex(space-between);
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    font-size: 1.5em;
+    font-weight: 900;
+  }
+  &__label,
+  &__input {
+    display: none;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+  }
+
+  &__item {
+    position: relative;
+    border: none;
+    padding: 0.2rem;
+    color: variables.$primary_color;
+    text-decoration: none;
+    margin: 5px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      width: 0%;
+      height: 1px;
+      background: variables.$primary_color;
+      transition: width 0.5s ease, left 0.5s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+  @media (max-width: 768px) {
+    &__label {
+      display: block;
+      cursor: pointer;
+    }
+
+    &__menu {
+      position: fixed;
+      top: 80px;
+      bottom: 0;
+      left: -100%;
+      width: 100%;
+      background-color: #0009;
+      @include mixinsfunc.create-flex(space-evenly);
+      flex-direction: column;
+      transition: all 0.5s ease-in-out;
+    }
+
+    &__input:checked + &__menu {
+      left: 0;
+    }
+
+    &__item {
+      color: #fff;
+    }
+  }
+}
+
+// .logo img {
+//   width: 75px;
+//   height: 75px;
+// }
