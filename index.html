@@ -1,34 +1,257 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora</title>
-</head>
-<body>
-    <!-- Estructura básica del simulador de préstamos en el HTML -->
-    <div>
-        <label for="tipoPrestamoSelect">Seleccione un tipo de préstamo:</label>
-        <select id="tipoPrestamoSelect">
-            <option value="PrestamoPersonal">Préstamo Personal</option>
-            <option value="PrestamoHipotecario">Préstamo Hipotecario</option>
-        </select>
+<html lang="es">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/favicon-32x32.png" type="image/x-icon" />
+    <!--GFonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Enlaces a hojas de estilo CSS y scripts -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./sass/style.css" />
+    <title>Black Wing - Asesoría Financiera</title>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <div class="navbar__logo">
+          <img
+            class="navbar__img"
+            src="./images/Logo.png"
+            alt="Logo black Wing"
+          />
+        </div>
+
+        <h1 class="navbar__title">Black Wing</h1>
+        <!-- Menu mobile -->
+        <label for="menu-mobile" class="navbar__label">
+          <img
+            class="navbar__img"
+            src="assets/hamburguer.svg"
+            alt="icono menu mobile"
+          />
+        </label>
+        <input type="checkbox" id="menu-mobile" class="navbar__input" />
+        <!-- Fin menu mobile -->
+
+        <div class="navbar__menu">
+          <a href="./" class="navbar__item">Home</a>
+          <a href="./pages/about.html" class="navbar__item">Empresa</a>
+          <a href="./pages/services.html" class="navbar__item">Servicios</a>
+          <a href="./pages/blog.html" class="navbar__item">Blog</a>
+          <a href="./pages/loancalculator.html" class="navbar__item">Calculadora de prestamos</a>
+          <a href="./pages/contact.html" class="navbar__item">Contacto</a>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <div class="hero">
+        <div>
+          <h2>¡Bienvenidos a Black Wing!</h2>
+          <p>
+            Somos una empresa de asesoría financiera comprometida con nuestros
+            clientes.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <hr />
+    <main>
+      <section class="featured">
+        <article class="featured__article">
+          <h2>Servicios destacados</h2>
+          <p>
+            Bienvenido a nuestra agencia de asesoría financiera integral con
+            enfoque en criptomonedas. Nuestro objetivo es brindar soluciones
+            personalizadas a nuestros clientes en un mercado financiero en
+            constante cambio. Con nuestra amplia experiencia en el sector
+            financiero y criptomonedas, estamos equipados para brindarle las
+            mejores estrategias y soluciones para maximizar su inversión. Nos
+            enorgullece ser un equipo comprometido y confiable para ayudarlo a
+            lograr sus objetivos financieros. En nuestro sitio web, encontrará
+            información detallada sobre nuestros servicios, nuestra experiencia
+            y cómo podemos ayudarlo a alcanzar sus objetivos financieros.
+          </p>
+        </article>
+        <article class="featured__article">
+          <img src="images/ejemplo.png" alt="Imagen de la sección 1" />
+        </article>
+      </section>
+
+      <section class="featured featured--reverse">
+        <article class="featured__article">
+          <h2>Ultimas Noticias</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
+            mollitia recusandae fugiat corrupti exercitationem officia amet
+            beatae quisquam, quia facere officiis, dolores consectetur quibusdam
+            modi corporis similique sint? Nam, sapiente.
+          </p>
+        </article>
+        <article class="featured__article">
+          <img src="./images/ejemplo.png" alt="Imagen de la sección 2" />
+        </article>
+      </section>
+
+      <section class="experiences">
+        <h3>Experiencias</h3>
+        <div class="experiences__container">
+          <iframe
+            class="experiences__item"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/kMTBs_1cs6M"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            class="experiences__item"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/9sCVcWD1Svs"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+    </main>
+
+    <!-- Contenido del pie de página -->
+    <div class="container text-white">
+      <footer class="pt-5">
+        <div class="row text-center">
+          <div class="col-12 col-md-4 mx-auto mt-5 mt-md-0">
+            <h5 class="text-uppercase mb-4 font-weight-bold text-warning">
+              Black Wing
+            </h5>
+            <p class="text-light">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Accusantium voluptates accusamus illum, commodi fugit optio
+              tempore quo ex maiores
+            </p>
+          </div>
+
+          <div class="col-12 col-md-4 mx-auto mt-5 mt-md-0">
+            <h5
+              class="text-uppercase mb-4 font-weight-bold text-center text-warning"
+            >
+              Links utiles
+            </h5>
+            <p class="text-center mb-1">
+              <a href="./" class="text-light">Home</a>
+            </p>
+            <p class="text-center mb-1">
+              <a href="./pages/about.html" class="text-light">Empresa</a>
+            </p>
+            <p class="text-center mb-1">
+              <a href="./pages/services.html" class="text-white">Servicios</a>
+            </p>
+            <p class="text-center mb-1">
+              <a href="./pages/blog.html" class="text-white">Blog</a>
+            </p>
+            <p class="text-center mb-1">
+              <a href="./pages/contact.html" class="text-white">Contacto</a>
+            </p>
+          </div>
+
+          <div class="col-12 col-md-4 mb-3 mt-5 mt-md-0">
+            <form>
+              <h5 class="text-uppercase mb-4 font-weight-bold text-warning">
+                Newsletter
+              </h5>
+              <p class="text-light">
+                Monthly digest of what's new and exciting from us.
+              </p>
+              <div class="d-flex flex-column flex-sm-row w-100 gap-2 pt-4">
+                <label
+                  for="newsletter1"
+                  class="visually-hidden text-white"
+                ></label>
+                <input
+                  id="newsletter1"
+                  type="email"
+                  class="form-control bg-dark text-white"
+                  placeholder="Email"
+                />
+                <button type="button" class="btn btn-primary">
+                  Suscribete
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div
+          class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top"
+        >
+          <p class="text-light">
+            <small>© 2023 Black Wing. Derechos reservados.</small>
+          </p>
+          <ul class="list-unstyled d-flex mx-auto me-md-0">
+            <li class="ms-3">
+              <a
+                class="link-body-emphasis text-light"
+                href="#"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                <img
+                  class="contact__icon"
+                  src="./assets/twitter.svg"
+                  alt="icono teléfono"
+                />
+              </a>
+            </li>
+            <li class="ms-3">
+              <a
+                class="link-body-emphasis text-light"
+                href="#"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                <img
+                  class="contact__icon"
+                  src="./assets/facebook.svg"
+                  alt="icono teléfono"
+                />
+              </a>
+            </li>
+            <li class="ms-3">
+              <a
+                class="link-body-emphasis text-light"
+                href="#"
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+              >
+                <img
+                  class="contact__icon"
+                  src="./assets/instagram.svg"
+                  alt="icono teléfono"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </div>
-  
-  <div>
-    <label for="montoInput">Monto del préstamo:</label>
-    <input type="number" id="montoInput">
-  </div>
-  
-  <div>
-    <label for="plazoInput">Plazo (en meses):</label>
-    <input type="number" id="plazoInput">
-  </div>
-  
-  <button id="calcularBtn">Calcular Cuota</button>
-  
-  <div id="resultado"></div>
-  
-    <script src="App.js"></script>
-</body>
+    <!-- 
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script> -->
+  </body>
 </html>
