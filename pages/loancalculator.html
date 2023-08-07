@@ -55,32 +55,111 @@
       </div>
     </nav>
 
-    <div class="card mb-3 mx-auto">
-        <div class="row g-0">
-            <div>
-                <label for="tipoPrestamoSelect">Seleccione un tipo de préstamo:</label>
-                <select id="tipoPrestamoSelect">
-                    <option value="PréstamoPersonal">Préstamo Personal</option>
-                    <option value="PréstamoHipotecario">Préstamo Hipotecario</option>
-                    <!-- Agregar aquí otros tipos de préstamos si es necesario -->
-                </select>
-            </div>
-        
-            <div>
-                <label for="montoInput">Monto del préstamo:</label>
-                <input type="number" id="montoInput">
-            </div>
-        
-            <div>
-                <label for="plazoInput">Plazo (en meses):</label>
-                <input type="number" id="plazoInput">
-            </div>
-        
-            <button id="calcularBtn">Calcular Cuota</button>
-        
-            <div id="resultado"></div>
+    <section class="card w-75">
+      <h5 class="card-header text-center">Simulá tu préstamo</h5>
+      <form id="formulario" class="card-body">
+        <div class="row py-2">
+          <label class="col-sm" for="tipoPrestamoSelect"
+            >Tipo de préstamo:</label
+          >
+          <select class="col-sm" id="tipoPrestamoSelect">
+          </select>
         </div>
-    </div>
+        <div class="row py-2">
+          <label class="col-sm" for="montoInput">Monto del préstamo:</label>
+          <input
+          class="col-sm"
+            type="number"
+            id="montoInput"
+            value="0"
+            min="2"
+            autocomplete="off"
+            step="1"
+            required
+          />
+        </div>
+        <div class="row py-2">
+          <label class="col-sm" for="plazoInput">Plazo (en meses):</label>
+          <input
+            class="col-sm"
+            type="number"
+            id="plazoInput"
+            value="0"
+            min="2"
+            autocomplete="off"
+            step="1"
+            required
+          />
+        </div>
+        <div class="row py-2"> 
+          <label class="col-sm" for="plazoInput">Ingresos mensuales:</label>
+          <input
+            class="col-sm"
+            type="number"
+            id="ingresosMensuales"
+            value="0"
+            min="2"
+            autocomplete="off"
+            step="1"
+            required
+          />
+        </div>
+        <div class="text-center">
+          <div class="card-footer bg-transparent">
+            <input class="btn btn-primary" type="submit" value="Calcular" />
+            <!-- <input style="display: none;" id="solicitarBtn" class="btn btn-primary" type="button" value="Solicitar" /> -->
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section class="card w-75 mt-5 text-center">
+      <h5 class="card-header text-center">Solicita tu préstamo</h5>
+      <form method='POST' id="formularioSolicitar" class="card-body">
+        <p>Ingresa tus datos y un asesor te contactará a la brevedad</p>
+        <div class="row p-2">
+          <input
+            class="col-sm"
+            id="nombre"
+            name="nombre"
+            placeholder="Nombre completo"
+            required
+          />
+        </div>
+        <div class="row p-2">
+          <input
+            class="col-sm"
+            id="telefono"
+            name="telefono"
+            placeholder="Teléfono"
+            required
+          />
+        </div>
+        <div class="row p-2">
+          <input
+            class="col-sm"
+            id="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="row p-2">
+          <textarea
+            class="col-sm"
+            id="comentario"
+            name="comentario"
+            placeholder="Comentario"
+          ></textarea>
+        </div>
+
+        <div>
+          <div class="card-footer bg-transparent">
+            <input id="solicitarBtn" class="btn btn-primary" type="submit" value="Solicitar" />
+          </div>
+        </div>
+      </form>
+    </section>
     
     <!-- Contenido del pie de página -->
     <div class="container text-white">
@@ -199,6 +278,7 @@
         </div>
       </footer>
     </div>
+    <script src="../App.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
-  <script src="../App.js"></script>
 </html>
