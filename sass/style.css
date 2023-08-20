@@ -35,7 +35,8 @@
   font-size: 1.5em;
   font-weight: 900;
 }
-.navbar__label, .navbar__input {
+.navbar__label,
+.navbar__input {
   display: none;
 }
 .navbar__menu {
@@ -52,7 +53,7 @@
   margin: 5px;
 }
 .navbar__item::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -92,7 +93,7 @@
 }
 
 .hero {
-  background-image: url("../images/hero_img.jpg");
+  background-image: url('../images/hero_img.jpg');
   min-height: calc(100vh - 80px);
   background-size: cover;
   background-repeat: no-repeat;
@@ -219,7 +220,12 @@
 }
 
 .heroserv {
-  background: linear-gradient(116deg, #ff3a3a -15.11%, #ae249a 51.46%, #081ea9 113.99%);
+  background: linear-gradient(
+    116deg,
+    #ff3a3a -15.11%,
+    #ae249a 51.46%,
+    #081ea9 113.99%
+  );
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -386,7 +392,7 @@
     width: 100%;
     grid-template-columns: 45% 55%;
     grid-template-rows: 20% 60% 20%;
-    grid-template-areas: "title  text" "data   form" "logo   form";
+    grid-template-areas: 'title  text' 'data   form' 'logo   form';
   }
   .contact__title {
     grid-area: title;
@@ -489,4 +495,15 @@ p {
 
 footer p {
   font-size: 16px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.dark-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+.theme-btn {
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+}

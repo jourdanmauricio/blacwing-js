@@ -42,7 +42,8 @@ function calcularCuota() {
   const interesMensual = prestamoSeleccionado.tasa / 100 / 12;
   const plazo = parseInt(plazoInput.value);
   const monto = parseInt(montoInput.value);
-  const cuota = (monto * interesMensual) / (1 - Math.pow(1 + interesMensual, -plazo));
+  const cuota =
+    (monto * interesMensual) / (1 - Math.pow(1 + interesMensual, -plazo));
   return cuota.toFixed(2);
 }
 
@@ -106,13 +107,13 @@ async function procesarSolicitud(e) {
 
 window.onload = function () {
   cargarDatos();
-  
+
   const storedPrestamos = localStorage.getItem('prestamos');
   if (storedPrestamos) {
     prestamos = JSON.parse(storedPrestamos);
     actualizarCamposFormulario();
   }
-  
+
   document
     .getElementById('tipoPrestamoSelect')
     .addEventListener('change', changeTipoPrestamo);
