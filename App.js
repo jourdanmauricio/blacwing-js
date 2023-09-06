@@ -9,7 +9,7 @@ function actualizarCamposFormulario() {
   for (tipoPrestamo of prestamos) {
     let option = document.createElement('option');
     option.id = tipoPrestamo.id;
-    option.text = tipoPrestamo.tipo;
+    option.text = tipoPrestamo.type;
     tipoPrestamoSelect.add(option);
   }
 }
