@@ -15,7 +15,8 @@ function actualizarCamposFormulario() {
 }
 
 function cargarDatos() {
-  fetch('https://64d00b45ffcda80aff526076.mockapi.io/prestamos')
+  // fetch('https://64d00b45ffcda80aff526076.mockapi.io/prestamos')
+  fetch('https://api.labranzas.store/v1/loans')
     .then((response) => response.json())
     .then((jsonData) => {
       prestamos = jsonData;

@@ -1,3 +1,5 @@
+.env
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
