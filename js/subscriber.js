@@ -2,9 +2,9 @@ function onSubmit(e) {
   e.preventDefault();
 
   const data = Object.fromEntries(new FormData(e.target));
-  data.url = 'https://jourdanmauricio.github.io/blacwing-js';
+  data.url = 'jourdanmauricio.github.io/blacwing-js';
 
-  fetch('https://api.labranzas.store/v1/subscribers', {
+  fetch('https://api.lumau.com.ar/v1/subscribers', {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
