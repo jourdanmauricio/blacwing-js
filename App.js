@@ -22,8 +22,8 @@ function cargarDatos() {
       prestamos = jsonData;
       localStorage.setItem('prestamos', JSON.stringify(prestamos));
       actualizarCamposFormulario();
-      plazoInput.max = prestamos[0].cantMaxCoutas;
-      montoInput.max = prestamos[0].montoMax;
+      plazoInput.max = prestamos[0].maxQuantityQuotes;
+      montoInput.max = prestamos[0].maxAmount;
       prestamoSeleccionado = prestamos[0];
     })
     .catch((error) => console.error('Error al cargar los datos:', error));
@@ -35,8 +35,8 @@ function changeTipoPrestamo(e) {
   );
   plazoInput.value = 0;
   montoInput.value = 0;
-  plazoInput.max = prestamoSeleccionado.cantMaxCoutas;
-  montoInput.max = prestamoSeleccionado.montoMax;
+  plazoInput.max = prestamoSeleccionado.maxQuantityQuotes;
+  montoInput.max = prestamoSeleccionado.maxAmount;
 }
 
 function calcularCuota() {
